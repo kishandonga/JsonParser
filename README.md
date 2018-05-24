@@ -3,7 +3,7 @@ JsonParser is simple JSON parsing library, you can parse JSONObject or JSONArray
 
 ## Installation
 
-This JsonParser JAR add in the `lib` folder then after set in build path. Download JAR form this link [JsonParser_DLab_1.1.jar](Release/JsonParser_DLab_1.1.jar&raw=true). For, the more information refer this [`JsonParser`](src/main/) sample project.  
+This JsonParser JAR adds in the `lib` folder then after set in the build path. Download JAR form this link [JsonParser_DLab_1.1.jar](Release/JsonParser_DLab_1.1.jar). For, the more information refer this [`JsonParser`](src/main/) sample project.  
 
 ## Path
 Path is combination of the object key and index number of the array item.  
@@ -38,12 +38,24 @@ You can refer more example [here](src/main/JsonParserTest.java),
 }}
 ```
 
+```java
+new JsonParser().addObserver(new OnValueObserver() {
+	@Override
+	public void onValueFound(String key, Object value) {
+		System.out.println(String.valueOf("Find By Path : " + value.toString()));
+	}
+	
+}).inFind(GetJson.strJson_3, "Dpath=[menu/items/12/label]"); 
+
+// Output :- Find By Path : Find...
+```
+
 ## Key
-Key is a unique element of the object so, duplication of the key is not allowed in the object but whole JSONObject or JSONArray may be have same name key.
+Key is a unique element of the object so, duplication of the key is not allowed in the object but whole JSONObject or JSONArray may be have same name key more then one time.
 
 `Dkey=[value]`    
 
-here, `value` is your key and more then one time if it exists in the whole object then during this recursively process, if key found then notify the user on `onValueFound(String key, Object value)`.
+here, `value` is your key and more then one time if it exists in the whole object then during this recursively process, if key found then notify the user on `onValueFound(String key, Object value)` method.
 
 ### Example:
 
@@ -93,6 +105,10 @@ new JsonParser().addObserver(new OnValueObserver() {
 * multiple path is not supported
 * array of key or array or path not supported as arguments
 * always need listener as a notifier
+
+### Change Log
+
+Refer this file for the library version informations [here](ChangeLog),
 
 ### Contributing
 
