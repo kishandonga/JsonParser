@@ -62,7 +62,7 @@ public class JsonParser {
 		
 		for(String vt : token){
 			if(isInt(vt)){
-				object = inFindByPath((JSONArray)object, Integer.parseInt(vt));
+				object = inFindByPath((JSONArray)object, (Integer.parseInt(vt) - 1));
 			}else{
 				object = inFindByPath((JSONObject)object, vt);
 			}
