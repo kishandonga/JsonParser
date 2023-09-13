@@ -1,22 +1,22 @@
 # JsonParser
-JsonParser is simple JSON parsing library, you can parse JSONObject or JSONArray using path and key. Simply you just need to pass the name of the object or object key and index number of the array item in your path.  
+JsonParser is a simple JSON parsing library, that parses JSONObject or JSONArray using path and key. Simply you just need to pass the key of the object and if it is an array then index number in your path.  
 
 ## Installation
 
-This JsonParser JAR adds in the `lib` folder then after set in the build path. Download JAR form this link [JsonParser_DLab_1.1.jar](Release/JsonParser_DLab_1.1.jar). For, the more information refer this [`JsonParser`](src/main/) sample project.  
+Add JsonParser JAR in the `lib` folder then set in the build path. Download JAR from this link [JsonParser_DLab_1.1.jar](Release/JsonParser_DLab_1.1.jar). For, more information refer to this [`JsonParser`](src/main/) sample project.  
 
 ## Path
-Path is combination of the object key and index number of the array item.  
+The path is a combination of the object key and index number of the array item.  
 
 `Dpath=[menu/items/12/label]`    
 
-here, `menu`  `items` `label` is your object key and 12 is array item index number now, the question arises how to parse using this path so let's little talk on it. When you give path to the library, it is converted path to token then after, first check is JSONObject or JSONArray if object then token must have key value(if not found then it is throwing exception and process break) then after this process recursively doing till your path's all token finished, once token finished then process break and return the result in the Object format.  
+here, `menu`  `items` `label` is your object key and 12 is the array item index number, When you give a path to the library, it is converted path to a token then after, first check is JSONObject or JSONArray if object then token must have key value(if not found then it is throwing exception and process break) then after this process recursively doing till your path's all token finished, once token finished then process break and return the result in the Object format.  
 
-> Note : Array index is starting from the 1 so, your array first item index is 1.
+> Note: Here, the array index starts from 1 so, in the above example 12 is the 12<sup>th</sup> element of the array.
 
 ### Example:
 
-You can refer more example [here](src/main/JsonParserTest.java), 
+Please refer this example [here](src/main/JsonParserTest.java), 
 
 ```json
 {"menu": {
@@ -42,24 +42,24 @@ You can refer more example [here](src/main/JsonParserTest.java),
 new JsonParser().addObserver(new OnValueObserver() {
 	@Override
 	public void onValueFound(String key, Object value) {
-		System.out.println(String.valueOf("Find By Path : " + value.toString()));
+		System.out.println(String.valueOf("Find By Path: " + value.toString()));
 	}
 	
 }).inFind(GetJson.strJson_3, "Dpath=[menu/items/12/label]"); 
 
-// Output :- Find By Path : Find...
+// Output:- Find By Path: Find...
 ```
 
 ## Key
-Key is a unique element of the object so, duplication of the key is not allowed in the object but whole JSONObject or JSONArray may be have same name key more then one time.
+The key is a unique element of the object so, duplication of the key is not allowed in the object but the whole JSONObject or JSONArray may have the same name key more than one time.
 
 `Dkey=[value]`    
 
-here, `value` is your key and more then one time if it exists in the whole object then during this recursively process, if key found then notify the user on `onValueFound(String key, Object value)` method.
+here, `value` is your key, and more than once if it exists in the whole object then during this recursive process notify the user on `onValueFound(String key, Object value)` method.
 
 ### Example:
 
-You can refer more example [here](src/main/JsonParserTest.java), 
+Please this example [here](src/main/JsonParserTest.java), 
 
 ```json
 {"menu": {
@@ -79,44 +79,44 @@ You can refer more example [here](src/main/JsonParserTest.java),
 new JsonParser().addObserver(new OnValueObserver() {
 	@Override
 	public void onValueFound(String key, Object value) {
-		System.out.println(String.valueOf("Find By Key : " + value));
+		System.out.println(String.valueOf("Find By Key: " + value));
 	}
 	
 }).inFind(GetJson.strJson_4, "Dkey=[value]");
 
 // Output :- 
-// Find By Key : New
-// Find By Key : Open
-// Find By Key : Close
+// Find By Key: New
+// Find By Key: Open
+// Find By Key: Close
 ```
 
 ***
 
 ### End User
 
-* QA Engineer, Developer and who not like to do manually parsing of the JSONObject and JSONArray.
-* How I get the idea to develope this type of library, when I am helping to the one of the my QA friend in his automation process that time, I observed that he man facing trouble on the parsing of the JSONObject then I decided to develop this type of library, which have structure as like selenium Xpath.
+* QA Engineer, developer, who does not like manual parsing of the JSONObject and JSONArray.
+* How did I get the idea to develop this type of library? When I was helping one of my QA friends in his automation process at that time, I observed that he was facing trouble in parsing, and I decided to develop this type of library, which has a structure like selenium Xpath.
 
 
 ### Current issues
 
-* Integer key value of object's is not supported
+* The integer key value of objects is not supported
 * Only JSONObject or JSONArray as string passing in the arguments
-* multiple path is not supported
+* Multiple path is not supported
 * array of key or array or path not supported as arguments
-* always need listener as a notifier
+* Always need listener as a notifier
 
 ### Change Log
 
-Refer this file for the library version informations [here](ChangeLog),
+Refer to this file for the library version information [here](ChangeLog),
 
 ### Contributing
 
-Contributions are welcome! If you find a bug please report it and if you want add new feature then please suggest to me. If you want to contribute code please file an issue and create a branch off of the current dev branch and file a pull request.
+Contributions are welcome! If you find any bug please report it if you want to contribute code please raise PR.
 
 ### About me
 
-I'm Kishan Donga and you can connect with me via below links, I am a developer and I love to create innovations.
+I'm Kishan Donga! Connect with me via the below handles, I am a developer and I love to create innovations.
 
 LinkedIn [@ikd96](https://www.linkedin.com/in/ikd96/) 
 Email [kishandonga.92@gmail.com](mailto:kishandonga.92@gmail.com)
